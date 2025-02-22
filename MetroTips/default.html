@@ -11,7 +11,7 @@
         /* 布局样式 */
         .container {
             display: flex;
-            flex-direction: column;
+            -ms-flex-direction: column;
             height: 100vh;
         }
 
@@ -111,7 +111,7 @@
 
                     // 如果导航失败，弹出提醒
                     if (!e.isSuccess) {
-                        var msgDialog = new Windows.UI.Popups.MessageDialog("加载失败，请检查网络连接或本地文件是否存在。", "错误");
+                        var msgDialog = new Windows.UI.Popups.MessageDialog("加载失败，请检查网络连接或本地文件是否存在。错误信息: " + (e.webErrorStatus ? e.webErrorStatus : ""), "错误");
                         msgDialog.commands.append(new Windows.UI.Popups.UICommand("确定"));
                         msgDialog.showAsync();
                     }
@@ -119,5 +119,5 @@
             });
         })();
     </script>
-</body>
+</body> 
 </html>

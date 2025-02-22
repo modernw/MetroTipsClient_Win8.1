@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="6166dbef-3c7c-4be1-b09f-99c402d8581f" Version="1.0.1.19" Publisher="CN=Bruce" />
+  <Identity Name="WindowsModern.MetroHelpCenter" Version="1.1.0.23" Publisher="CN=Bruce" />
   <Properties>
     <DisplayName>Metro Tips</DisplayName>
     <PublisherDisplayName>Bruce Winter</PublisherDisplayName>
@@ -33,4 +33,8 @@
       </m2:VisualElements>
     </Application>
   </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+  </Capabilities>
 </Package>
