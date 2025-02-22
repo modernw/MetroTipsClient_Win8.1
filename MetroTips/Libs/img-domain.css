@@ -1,0 +1,26 @@
+﻿.domain-img {
+    width: auto;
+    height: auto;
+    max-width: 600pt;
+    max-height: 400pt;
+    display: block; /* 兼容IE，确保图片按比例缩放 */
+    margin: auto;  /* 居中 */
+}
+
+/* 兼容IE的处理 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .domain-img {
+        width: expression(this.width > 600 ? "600pt" : "auto");
+        height: expression(this.height > 400 ? "400pt" : "auto");
+    }
+}
+
+.domain-img-center {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}

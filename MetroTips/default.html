@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Metro Tips</title>
+    <!-- WinJS 引用 -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <style>
+        /* 布局样式 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #webView {
+            flex-grow: 1;
+            width: 100%;
+            border: none;
+        }
+
+        /* 进度环的样式 */
+        .loading-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 网页显示区域 -->
+        <x-ms-webview id="webView" src="https://modernw.github.io/MetroTipsOnline/Main.html"></x-ms-webview>
+
+        <!-- 进度环（加载动画） -->
+        <div id="loadingIndicator" class="loading-container">
+            <progress id="progressRing" data-win-control="WinJS.UI.ProgressRing" data-win-options="{activated: true}"></progress>
+        </div>
+
+        <!-- WinJS AppBar 作为底部工具栏 -->
+        <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="{sticky: true}">
+            <button id="refreshButton"
+                    data-win-control="WinJS.UI.AppBarCommand"
+                    data-win-options="{icon: 'refresh', label: '刷新', section: 'global'}"></button>
+            <button id="toggleDocButton"
+                    data-win-control="WinJS.UI.AppBarCommand"
+                    data-win-options="{icon: 'document', label: '本地文档', section: 'global'}"></button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            WinJS.UI.processAll().then(function () {
+                var webView = document.getElementById('webView');
+                var refreshButton = document.getElementById('refreshButton');
+                var toggleDocButton = document.getElementById('toggleDocButton');
+                var loadingIndicator = document.getElementById('loadingIndicator');
+
+                // 调试模式开关（正式版时设为 false 或删除）
+                var DEBUG_MODE = false;
+                var DEBUG_DELAY = 5000; // 5 秒
+
+                // 默认加载在线文档
+                var onlineURL = "https://modernw.github.io/MetroTipsOnline/Main.html";
+                var localURL = "ms-appx-web:///IndexLocal.html";
+                var isOnline = true; // 当前是否为在线模式
+
+                // 刷新 WebView
+                refreshButton.addEventListener('click', function () {
+                    webView.navigate(webView.src);
+                    document.getElementById("appBar").winControl.hide(); // 隐藏 AppBar
+                });
+
+                // 切换本地/在线文档
+                toggleDocButton.addEventListener('click', function () {
+                    if (isOnline) {
+                        webView.navigate(localURL);
+                        toggleDocButton.winControl.label = "在线文档";
+                    } else {
+                        webView.navigate(onlineURL);
+                        toggleDocButton.winControl.label = "本地文档";
+                    }
+                    isOnline = !isOnline;
+                    document.getElementById("appBar").winControl.hide(); // 隐藏 AppBar
+                });
+
+                // 监听 WebView 开始导航，显示加载动画
+                webView.addEventListener('MSWebViewNavigationStarting', function (e) {
+                    console.log('开始导航: ' + e.uri);
+                    loadingIndicator.style.display = "block"; // 显示加载动画
+                });
+
+                // 监听 WebView 完成导航
+                webView.addEventListener('MSWebViewNavigationCompleted', function (e) {
+                    console.log(e.isSuccess ? '导航成功' : '导航失败');
+
+                    if (DEBUG_MODE) {
+                        console.log("调试模式：延长加载动画 " + DEBUG_DELAY / 1000 + " 秒");
+                        setTimeout(function () {
+                            loadingIndicator.style.display = "none"; // 5 秒后隐藏
+                        }, DEBUG_DELAY);
+                    } else {
+                        loadingIndicator.style.display = "none"; // 立即隐藏
+                    }
+
+                    // 如果导航失败，弹出提醒
+                    if (!e.isSuccess) {
+                        var msgDialog = new Windows.UI.Popups.MessageDialog("加载失败，请检查网络连接或本地文件是否存在。", "错误");
+                        msgDialog.commands.append(new Windows.UI.Popups.UICommand("确定"));
+                        msgDialog.showAsync();
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

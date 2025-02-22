@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>6166dbef-3c7c-4be1-b09f-99c402d8581f</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0'">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
+  <PropertyGroup>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <PackageCertificateKeyFile>MetroTips_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="Articles\End\Index.html" />
+    <Content Include="Articles\GetApp\Images\chart-1.png" />
+    <Content Include="Articles\GetApp\Images\chart-2.png" />
+    <Content Include="Articles\GetApp\Images\chart-3.png" />
+    <Content Include="Articles\GetApp\Images\getlink-1-1.png" />
+    <Content Include="Articles\GetApp\Images\getlink-1-2.png" />
+    <Content Include="Articles\GetApp\Images\getlink-2-1.png" />
+    <Content Include="Articles\GetApp\Images\getlink-2-2.png" />
+    <Content Include="Articles\GetApp\Images\getlink-3-1.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-1.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-10.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-11.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-2.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-3.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-4.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-5.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-6.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-7.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-8.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-1-9.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-2-1.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-2-2.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-2-3.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-3-1.ico" />
+    <Content Include="Articles\GetApp\Images\getpkg-3-2.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-3-3.png" />
+    <Content Include="Articles\GetApp\Images\getpkg-4-1.png" />
+    <Content Include="Articles\GetApp\Index.html" />
+    <Content Include="Articles\InstallApp\Images\devmode-1-1.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-1-2.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-4-1.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-4-2.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-4-3-1.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-4-3.png" />
+    <Content Include="Articles\InstallApp\Images\devmode-4-4.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-0-1.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-1-1.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-1-2.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-1-3.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-3-1.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-3-1.svg" />
+    <Content Include="Articles\InstallApp\Images\insapp-3-2.png" />
+    <Content Include="Articles\InstallApp\Images\insapp-3-3.png" />
+    <Content Include="Articles\InstallApp\Images\lic-2-1.png" />
+    <Content Include="Articles\InstallApp\Images\lic-2-2.png" />
+    <Content Include="Articles\InstallApp\Images\lic-2-3.png" />
+    <Content Include="Articles\InstallApp\Images\sign-1-1.png" />
+    <Content Include="Articles\InstallApp\Images\sign-1-2.png" />
+    <Content Include="Articles\InstallApp\Images\sign-2-1.png" />
+    <Content Include="Articles\InstallApp\Images\sign-3-1.png" />
+    <Content Include="Articles\InstallApp\Images\sign-4-1.png" />
+    <Content Include="Articles\InstallApp\Images\sign-5-1.png" />
+    <Content Include="Articles\InstallApp\Index.html" />
+    <Content Include="Articles\items.js" />
+    <Content Include="Articles\MakePackage\Images\lnkcmd.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-2-0.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-2-1.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-2-2.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-2-3.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-3-1.png" />
+    <Content Include="Articles\MakePackage\Images\makepkg-3-2.png" />
+    <Content Include="Articles\MakePackage\Images\makesign-2-1.png" />
+    <Content Include="Articles\MakePackage\Images\makesign-2-2.png" />
+    <Content Include="Articles\MakePackage\Images\makesign-2-3.png" />
+    <Content Include="Articles\MakePackage\Images\makesign-3-1.png" />
+    <Content Include="Articles\MakePackage\Images\makesign-3-2.png" />
+    <Content Include="Articles\MakePackage\Images\sign-supplement-1.png" />
+    <Content Include="Articles\MakePackage\Images\sign-supplement-2.png" />
+    <Content Include="Articles\MakePackage\Images\sign-supplement-3.png" />
+    <Content Include="Articles\MakePackage\Images\sign-supplement-4.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-1.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-10.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-11.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-2.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-3.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-4.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-5.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-6.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-7.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-8.png" />
+    <Content Include="Articles\MakePackage\Images\signpkg-2-9.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-1.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-2.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-3.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-4.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-5.png" />
+    <Content Include="Articles\MakePackage\Images\usetools-1-6.png" />
+    <Content Include="Articles\MakePackage\Images\WSAppBak_Preview.png" />
+    <Content Include="Articles\MakePackage\Index.html" />
+    <Content Include="Assets\Square310x310Logo.scale-100.png" />
+    <Content Include="Audios\start.wav" />
+    <Content Include="default.html" />
+    <Content Include="IndexLocal.html" />
+    <Content Include="Images\aurora.jpg" />
+    <Content Include="Images\black.jpg" />
+    <Content Include="Images\DEFAULT_ICON.ico" />
+    <Content Include="Images\kagamine-len.jpg" />
+    <Content Include="Images\kagamine-rin-and-len.png" />
+    <Content Include="Images\lavender-field.jpg" />
+    <Content Include="Images\logo-small.scale-100.png" />
+    <Content Include="Images\logo.scale-100.png" />
+    <Content Include="Images\readme.txt" />
+    <Content Include="Images\smalllogo.scale-100.png" />
+    <Content Include="Images\splashscreen.scale-100.png" />
+    <Content Include="Images\storelogo.scale-100.png" />
+    <Content Include="Images\sunrise.jpg" />
+    <Content Include="Images\win10-hero-logon.png" />
+    <Content Include="Libs\article-styles.css" />
+    <Content Include="Libs\Fonts\fonts.css" />
+    <Content Include="Libs\Fonts\Fonts\offsymsl.eot" />
+    <Content Include="Libs\Fonts\Fonts\offsymsl.ttf" />
+    <Content Include="Libs\Fonts\Fonts\offsymsl.woff2" />
+    <Content Include="Libs\Fonts\Fonts\segmdl2.eot" />
+    <Content Include="Libs\Fonts\Fonts\segmdl2.ttf" />
+    <Content Include="Libs\Fonts\Fonts\SegoeIcons.eot" />
+    <Content Include="Libs\Fonts\Fonts\SegoeIcons.ttf" />
+    <Content Include="Libs\Fonts\Fonts\seguisym.eot" />
+    <Content Include="Libs\Fonts\Fonts\seguisym.ttf" />
+    <Content Include="Libs\img-domain.css" />
+    <Content Include="Libs\MetroUI\icons.css" />
+    <Content Include="Libs\MetroUI\metro.css" />
+    <Content Include="Libs\MetroUI\metrodark.css" />
+    <Content Include="Libs\theme-shadow-dark.css" />
+    <Content Include="Libs\theme-shadow-light.css" />
+    <Content Include="smalllogo.scale-140.png" />
+    <Content Include="smalllogo.scale-180.png" />
+    <Content Include="smalllogo.scale-80.png" />
+    <Content Include="smalllogo.targetsize-16.png" />
+    <Content Include="smalllogo.targetsize-256.png" />
+    <Content Include="smalllogo.targetsize-32.png" />
+    <Content Include="smalllogo.targetsize-48.png" />
+    <Content Include="Square310x310Logo.scale-100.png" />
+    <Content Include="Wide310x150Logo.scale-100.png" />
+    <None Include="MetroTips_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <!-- To modify your build process, add your task inside one of the targets below then uncomment
+       that target and the DisableFastUpToDateCheck PropertyGroup. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  -->
+</Project>

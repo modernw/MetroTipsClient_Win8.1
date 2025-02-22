@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Metro Tips</title>
+    <link rel="shortcut icon" href="./Images/DEFAULT_ICON.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 24px;
+            font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        p, h1, h2, h3, h4, h5, h6, ul, li, blockquote, img, span {
+            color: white !important;
+            font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", "Ebrima", "Nirmala", "Gadugi", "Segoe UI Emoji", "Segoe UI Symbol", "Meiryo", "Leelawadee", "Microsoft JhengHei", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Javanese Text", "Cambria Math";
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.1, 0.9, 0.2, 1); /* 非线性淡入淡出效果 */
+            z-index: -1; /* 保持背景在所有内容的后面 */
+        }
+
+        .container {
+            display: -ms-flexbox;
+            height: 100vh;
+            width: 100vw;
+            background: transparent;
+            overflow: hidden; /* 防止内容溢出 */
+            position: relative; /* 保证内容在背景之上 */
+            z-index: 1;
+        }
+
+        .nav, .content {
+            -ms-flex: 1;
+            position: relative; /* 为子元素定位提供参考 */
+            transition: transform 0.5s cubic-bezier(0.1, 0.9, 0.2, 1); /* 非线性页面切换动画 */
+            background: transparent;
+            height: 100%;
+            width: 100%;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(30%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes TransIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .nav {
+            animation: slideIn 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+            display: -ms-flexbox;
+            -ms-flex-direction: column;
+            transform: translateX(0);
+        }
+
+            .nav h1 {
+                margin: 0;
+                padding: 10px;
+                background-color: rgba(0, 0, 0, 0);
+                color: white;
+            }
+
+        #listView {
+            -ms-flex: 1;
+            display: -ms-flexbox;
+            -ms-flex-direction: column;
+            -ms-flex-wrap: wrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+            padding-left: calc(64pt + 10px);
+            padding-right: 24pt;
+            transition: transform 0.3s cubic-bezier(0.11, 0.5, 0.24, .96);
+        }
+
+        .listView-item {
+            width: 200px;
+            height: 150px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-style: solid;
+            border-color: #353535;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin: 10px;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.11, 0.5, 0.24, .96);
+        }
+
+            .listView-item:hover {
+                transform: scale(1.05); /* 鼠标悬停放大效果 */
+                border-color: gray;
+            }
+
+            .listView-item .title {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 5px;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                white-space: normal;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+        .content {
+            background-color: transparent;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+            .content.show {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+        #backButton {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+            z-index: 1;
+        }
+
+        #contentFrame {
+            width: calc(100% - 106px);
+            height: calc(100% - 46px);
+            border: none;
+            position: absolute;
+            left: 84px;
+            top: 21px;
+        }
+
+        iframe {
+            font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", "Ebrima", "Nirmala", "Gadugi", "Segoe UI Emoji", "Segoe UI Symbol", "Meiryo", "Leelawadee", "Microsoft JhengHei", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Javanese Text", "Cambria Math";
+        }
+    </style>
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+</head>
+<body>
+    <div id="background" style="background-image: url('Images/black.jpg');"></div>
+    <div class="container">
+        <div class="nav" id="nav">
+            <h1 id="guildTitle" style="margin: 24pt 24pt 16pt calc(64pt + 10px); /*font-size: 48px; */ font-family: 'Microsoft YaHei Light', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Segoe UI'; font-weight: lighter;" class="win-title">Metro Tips</h1>
+            <div id="listView" class="win-listview win-surface"></div>
+        </div>
+        <div class="content" id="content">
+            <button id="backButton" class="win-backbutton" data-win-control="WinJS.UI.BackButton" style="display: block; margin: 40px 24px 24px;"></button>
+            <iframe id="contentFrame"></iframe>
+        </div>
+    </div>
+    <audio id="start-play" controls style="display: none;">
+        <source src="Audios/start.wav" type="audio/mpeg">
+    </audio>
+
+    <script src="articles/items.js"></script>
+    <script>
+        const guidebackground = 'Images/black.jpg';
+
+        function showContent(url, background) {
+            const contentFrame = document.getElementById("contentFrame");
+            const backButton = document.getElementById("backButton");
+            const nav = document.getElementById("nav");
+            const content = document.getElementById("content");
+            const backgroundDiv = document.getElementById("background");
+
+            contentFrame.src = url;
+            backButton.style.display = "block";
+            nav.style.transform = "translateX(-100%)"; /* 滑出导航界面 */
+            content.classList.add('show');
+
+            // 更换背景并添加淡入效果
+            backgroundDiv.style.opacity = 0;
+            setTimeout(function() {
+                backgroundDiv.style.backgroundImage = 'url(' + background + ')';
+                backgroundDiv.style.opacity = 1;
+            }, 500);
+        }
+
+        function showNav() {
+            const backButton = document.getElementById("backButton");
+            const nav = document.getElementById("nav");
+            const content = document.getElementById("content");
+            const backgroundDiv = document.getElementById("background");
+
+            backButton.style.display = "none";
+            nav.style.transform = "translateX(0)"; /* 滑入导航界面 */
+            content.classList.remove('show');
+
+            // 恢复初始背景并添加淡入效果
+            backgroundDiv.style.opacity = 0;
+            setTimeout(function() {
+                backgroundDiv.style.backgroundImage = 'url(' + guidebackground + ')';
+                backgroundDiv.style.opacity = 1;
+            }, 500);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadItems();
+            const backgroundDiv = document.getElementById("background");
+            backgroundDiv.style.opacity = 0;
+            setTimeout(function() {
+                backgroundDiv.style.backgroundImage = 'url(' + guidebackground + ')';
+                backgroundDiv.style.opacity = 1;
+            }, 500);
+            // 添加初始非线性动画
+            document.getElementById("nav").style.animation = 'slideIn 0.8s cubic-bezier(0.1, 0.9, 0.2, 1) forwards';
+            setTimeout(function() {
+                document.getElementById("nav").style.animation = 'none';
+            }, 800);
+
+            document.getElementById("backButton").addEventListener("click", function() {
+                showNav();
+            });
+
+            // 处理鼠标滚轮滚动
+            const listView = document.getElementById("listView");
+            listView.addEventListener("wheel", function(event) {
+                listView.scrollLeft += event.deltaY;
+                event.preventDefault(); // 防止默认滚动行为
+            });
+            var audio = document.getElementById('start-play');
+            audio.volume = 0.5;
+            /*
+			audio.play();
+			*/
+        });
+    </script>
+</body>
+</html>
