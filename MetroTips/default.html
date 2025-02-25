@@ -44,7 +44,7 @@
         </div>
 
         <!-- WinJS AppBar 作为底部工具栏 -->
-        <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="{sticky: true}">
+        <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="{sticky: true, lightDismiss: true}">
             <button id="refreshButton"
                     data-win-control="WinJS.UI.AppBarCommand"
                     data-win-options="{icon: 'refresh', label: '刷新', section: 'global'}"></button>
@@ -115,6 +115,9 @@
                         msgDialog.commands.append(new Windows.UI.Popups.UICommand("确定"));
                         msgDialog.showAsync();
                     }
+                });
+                webView.addEventListener('focus', function () {
+                    document.getElementById("appBar").winControl.hide();
                 });
             });
         })();
